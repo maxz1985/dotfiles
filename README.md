@@ -39,7 +39,7 @@ dotfiles/
 ```
 ## Install PowerShell profile on Windows
 ```
-.\dotfiles\scripts\install-windows.ps1
+$HOME\dotfiles\scripts\install-windows.ps1
 ```
 ## oh-my-posh Windows
 ```PowerShell
