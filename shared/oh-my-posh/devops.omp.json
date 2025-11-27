@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 3,
+  "final_space": true,
+
+  "blocks": [
+    {
+      "//": "LEFT PROMPT — diamond chain with rounded start and pointed end",
+      "type": "prompt",
+      "alignment": "left",
+      "newline": false,
+      "segments": [
+        {
+          "type": "path",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "foreground": "#ffffff",
+          "background": "#61AFEF",
+          "template": " {{ .Path }} "
+        },
+        {
+          "type": "git",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "foreground": "#ffffff",
+          "background": "#98C379",
+          "template": " {{ .HEAD }}{{ if or .Working.Changed .Staging.Changed }}*{{ end }} "
+        }
+      ]
+    },
+
+    {
+      "//": "RIGHT PROMPT — cert.omp.json style pills, aligned right on same line",
+      "type": "prompt",
+      "alignment": "right",
+      "overflow": "hide",
+      "segments": [
+        {
+          "//": "Kubernetes pill — first, rounded left (E0B6) and pixel right (E0C6)",
+          "type": "kubectl",
+          "style": "diamond",
+          "leading_diamond": "\uE0B6",
+          "trailing_diamond": "\uE0C6",
+          "background": "#C8C8C8",
+          "foreground": "#000000",
+          "template": " 󱃾 {{ .Context }}{{ if .Namespace }}/{{ .Namespace }}{{ end }} "
+        },
+        {
+          "//": "Terraform pill — middle, pixel-to-pixel connector",
+          "type": "terraform",
+          "style": "diamond",
+          "leading_diamond": "\uE0C7",
+          "trailing_diamond": "\uE0C6",
+          "background": "#E5C07B",
+          "foreground": "#000000",
+          "template": " 󱚣 {{ .WorkspaceName }} "
+        },
+        {
+          "//": "AWS pill — middle, pixel-to-pixel connector",
+          "type": "aws",
+          "style": "diamond",
+          "leading_diamond": "\uE0C7",
+          "trailing_diamond": "\uE0C6",
+          "background": "#FFA400",
+          "foreground": "#ffffff",
+          "template": "  {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} "
+        },
+        {
+          "//": "Python venv pill — last, same cert-style tail",
+          "type": "python",
+          "style": "diamond",
+          "leading_diamond": "\uE0C7",
+          "trailing_diamond": "\uE0C6",
+          "background": "#906CFF",
+          "foreground": "#100E23",
+          "properties": {
+            "display_mode": "environment",
+            "fetch_virtual_env": true,
+            "home_enabled": false
+          },
+          "template": "  {{ if .Venv }}{{ .Venv }}{{ end }} "
+        }
+      ]
+    },
+
+    {
+      "//": "SECOND LINE — user input prompt",
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#98C379",
+          "template": "❯ "
+        }
+      ]
+    }
+  ]
+}
