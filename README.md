@@ -13,7 +13,7 @@ dotfiles/
     terminal/
       settings.json                  # Windows Terminal settings
     powershell/
-      Microsoft.PowerShell_profile.ps1
+      Profile.ps1                    # PowerShell Profile
       # optionally: profile for pwsh vs WindowsPowerShell separately
 
   macos/
@@ -33,7 +33,7 @@ dotfiles/
       aliases.sh                     # shared between bash/zsh/etc.
       functions.sh
     oh-my-posh/
-      devops.omp.json                # your main theme/config
+      devops.omp.json                # oh-my-posh config
       segments/                      # optional: custom segment configs
       themes/                        # optional: additional themes
 ```
