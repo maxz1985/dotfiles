@@ -1,5 +1,5 @@
 $allUsersProfile = $PROFILE.AllUsersAllHosts
-$targetProfile   = "$HOME\dotfiles\windows\powershell\Microsoft.PowerShell_profile.ps1"
+$targetProfile   = "$HOME\dotfiles\windows\powershell\profile.ps1"
 
 # Ensure directory exists
 $dir = Split-Path $allUsersProfile
