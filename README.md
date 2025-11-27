@@ -40,5 +40,5 @@ dotfiles/
 ## oh-my=posh windows
 ```PowerShell
 cd $HOME
-git clone https://github.com/<you>/dotfiles.git
+git clone https://github.com/maxz1985/dotfiles.git
 ```
