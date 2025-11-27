@@ -37,7 +37,7 @@ dotfiles/
       segments/                      # optional: custom segment configs
       themes/                        # optional: additional themes
 ```
-## oh-my=posh windows
+## oh-my-posh windows
 ```PowerShell
 cd $HOME
 git clone https://github.com/maxz1985/dotfiles.git
