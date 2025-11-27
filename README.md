@@ -5,7 +5,7 @@ dotfiles/
   README.md
 
   scripts/
-    install-windows.ps1
+    install-windows.ps1             # install Powershell Profile on Windows
     install-macos.sh
     install-linux.sh
 
@@ -37,7 +37,11 @@ dotfiles/
       segments/                      # optional: custom segment configs
       themes/                        # optional: additional themes
 ```
-## oh-my-posh windows
+## Install PowerShell profile on Windows
+```
+.\dotfiles\scripts\install-windows.ps1
+```
+## oh-my-posh Windows
 ```PowerShell
 cd $HOME
 git clone https://github.com/maxz1985/dotfiles.git
