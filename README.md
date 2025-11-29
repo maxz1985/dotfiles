@@ -20,12 +20,12 @@ dotfiles/
     iterm2/
       profiles.json                  # or exported plist / color schemes
     zsh/
-      .zshrc
+      .zshrc                         # zsh config
       .zprofile
 
   linux/
     bash/
-      .bashrc
+      .bashrc                       # bash config
       .bash_profile
 
   shared/
@@ -37,12 +37,23 @@ dotfiles/
       segments/                      # optional: custom segment configs
       themes/                        # optional: additional themes
 ```
-## Install PowerShell profile on Windows
-```
-. "$HOME\dotfiles\scripts\install-windows.ps1"
-```
-## oh-my-posh Windows
-```PowerShell
+
+## Clone the repo
+```shell
 cd $HOME
 git clone https://github.com/maxz1985/dotfiles.git
 ```
+## Install PowerShell profile on Windows
+```shell
+. "$HOME\dotfiles\scripts\install-windows.ps1"
+```
+
+## macOS install zsh config
+Use tiny loader in your .zshrc
+
+Replace the content of `.zshrc` with
+```shell
+source "$HOME/dotfiles/macos/zsh/.zshrc"
+```
+
+
