@@ -56,4 +56,10 @@ Replace the content of `.zshrc` with
 source "$HOME/dotfiles/macos/zsh/.zshrc"
 ```
 
+## Linux install bash config
+Use tiny loader in your .bashrc
 
+Replace the content of `.bashrc` with
+```shell
+source "$HOME/dotfiles/linux/bash/.bashrc"
+```
