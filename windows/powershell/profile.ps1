@@ -42,6 +42,9 @@ function Install-RequiredModule {
     }
 }
 
+# ~ to cd $HOME
+function ~ { Set-Location $HOME }
+
 # --- Dependencies ---
 Install-RequiredModule -Name 'posh-git' -Import
 Install-RequiredModule -Name 'Get-ChildItemColor' -Import
