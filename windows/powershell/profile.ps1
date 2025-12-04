@@ -86,3 +86,9 @@ Set-Alias -Name vi -Value vim
 # if (Get-Command zoxide -ErrorAction SilentlyContinue) {
 #     Invoke-Expression (& { (zoxide init powershell | Out-String) })
 # }
+
+# --- Local machine-specific overrides (not in repo) ---
+$localProfile = Join-Path $HOME "PowerShellProfile.ps1"
+if (Test-Path $localProfile) {
+    . $localProfile
+}
