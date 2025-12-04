@@ -1,4 +1,4 @@
-$allUsersProfile = $PROFILE.AllUsersAllHosts
+$allUsersProfile = $PROFILE.CurrentUserAllHosts
 $targetProfile   = "$HOME\dotfiles\windows\powershell\profile.ps1"
 
 # Ensure directory exists
