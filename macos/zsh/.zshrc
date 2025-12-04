@@ -101,3 +101,8 @@ alias '~'='cd ~'
 # if command -v zoxide >/dev/null 2>&1; then
 #   eval "$(zoxide init zsh)"
 # fi
+
+# --- Local machine-specific overrides (not in repo) ---
+if [ -f "$HOME/.zshrc.local" ]; then
+  source "$HOME/.zshrc.local"
+fi

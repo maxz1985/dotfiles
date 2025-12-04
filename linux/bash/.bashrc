@@ -103,4 +103,10 @@ alias '~'='cd ~'
 #   eval "$(zoxide init bash)"
 # fi
 
+# --- Local machine-specific overrides (not in repo) ---
+if [ -f "$HOME/.bashrc.local" ]; then
+  # shellcheck disable=SC1091
+  source "$HOME/.bashrc.local"
+fi
+
 
