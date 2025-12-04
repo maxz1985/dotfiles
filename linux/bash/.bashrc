@@ -1,27 +1,31 @@
 #!/usr/bin/env bash
+# shellcheck shell=bash
 
 #### ------------------------------------------------------------
-#### Basic safety / options
+#### History & basic bash options
 #### ------------------------------------------------------------
 
-# History settings (rough equivalent of PSReadLine history)
+# How many lines of history to keep in memory and on disk
 HISTSIZE=5000
-HISTFILE="$HOME/.zsh_history"
+HISTFILESIZE=10000
 
-setopt append_history          # don't overwrite history
-setopt share_history           # share history between sessions
-setopt inc_append_history      # write immediately
-setopt hist_ignore_dups        # ignore duplicates
-setopt hist_ignore_space       # ignore commands starting with space
+# Don't store duplicate lines, compact older duplicates
+HISTCONTROL=ignoredups:erasedups
 
-# Completion system
-autoload -Uz compinit
-compinit
+# Append to the history file, don't overwrite it
+shopt -s histappend
 
+# Save multi-line commands as a single history entry
+shopt -s cmdhist
+
+# Check window size after each command and update LINES/COLUMNS
+shopt -s checkwinsize
+
+# Allow recursive globbing (**), if supported
+shopt -s globstar 2>/dev/null || true
 
 #### ------------------------------------------------------------
-#### Helper: warn if dependency is missing
-#### (analogous to Install-RequiredModule, but non-intrusive)
+#### Helper: warn if a command is missing
 #### ------------------------------------------------------------
 
 ensure_cmd() {
@@ -31,50 +35,40 @@ ensure_cmd() {
   fi
 }
 
-# Check main tools (no auto-install, just warnings)
 ensure_cmd oh-my-posh  "prompt theming"
 ensure_cmd git         "git version control"
 ensure_cmd kubectl     "Kubernetes CLI (for completion and k alias"
 # ensure_cmd eza       "modern ls replacement (optional)"
-
+# ensure_cmd zoxide    "smart directory jumping (optional)"
 
 #### ------------------------------------------------------------
-#### Oh My Posh prompt
+#### Oh My Posh prompt (bash-native)
 #### ------------------------------------------------------------
 
 if command -v oh-my-posh >/dev/null 2>&1; then
-  eval "$(oh-my-posh init zsh --config "$HOME/dotfiles/shared/oh-my-posh/devops.omp.json")"
+  eval "$(oh-my-posh init bash --config "$HOME/dotfiles/shared/oh-my-posh/devops.omp.json")"
 fi
 
-
 #### ------------------------------------------------------------
-#### LS / LL / LA: colorized listings (similar to pwsh profile)
+#### LS / LL / LA: colorized listings (bash-style)
 #### ------------------------------------------------------------
 
-# Prefer eza if installed, else colorized ls
+# Prefer eza if available, else GNU ls coloring
 if command -v eza >/dev/null 2>&1; then
   alias ls='eza --group-directories-first --color=auto'
   alias ll='eza -lha --group-directories-first --color=auto'
   alias la='eza -lha --group-directories-first --color=auto'
 else
-  # macOS vs Linux color flags
-  if [[ "$OSTYPE" == darwin* ]]; then
-    alias ls='ls -G'
-  else
-    alias ls='ls --color=auto'
-  fi
-
+  # Assume GNU ls (Linux, WSL)
+  alias ls='ls --color=auto'
   alias ll='ls -lh'
-  alias la='ls -lha'   # closest to your PowerShell la
+  alias la='ls -lha'    # closest to oh-my-bash "la"
 fi
 
-
 #### ------------------------------------------------------------
-#### Git enhancements (completion + basic config)
+#### Git QoL aliases (prompt git info is via oh-my-posh)
 #### ------------------------------------------------------------
 
-# zsh already has good git completion once compinit runs.
-# Extra: common git aliases if you want them.
 alias gs='git status'
 alias gl='git log --oneline --graph --decorate'
 alias gd='git diff'
@@ -82,30 +76,31 @@ alias gc='git commit'
 alias gco='git checkout'
 alias gb='git branch'
 
-
 #### ------------------------------------------------------------
 #### kubectl completion + k alias
 #### ------------------------------------------------------------
 
 if command -v kubectl >/dev/null 2>&1; then
-  # zsh-native completion
   # shellcheck disable=SC1090
-  source <(kubectl completion zsh)
+  source <(kubectl completion bash)
   alias k='kubectl'
+  complete -F __start_kubectl k
 fi
-
 
 #### ------------------------------------------------------------
 #### Other aliases
 #### ------------------------------------------------------------
 
 alias vi='vim'
-
+# Type just "~" + Enter to cd to $HOME
+alias '~'='cd ~'
 
 #### ------------------------------------------------------------
-#### OPTIONAL: directory jumping with zoxide (mirrors pwsh comment)
+#### OPTIONAL: directory jumping with zoxide
 #### ------------------------------------------------------------
 
 # if command -v zoxide >/dev/null 2>&1; then
-#   eval "$(zoxide init zsh)"
+#   eval "$(zoxide init bash)"
 # fi
+
+
