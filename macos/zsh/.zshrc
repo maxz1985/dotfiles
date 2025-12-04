@@ -17,7 +17,6 @@ setopt hist_ignore_space       # ignore commands starting with space
 autoload -Uz compinit
 compinit
 
-
 #### ------------------------------------------------------------
 #### Helper: warn if dependency is missing
 #### (analogous to Install-RequiredModule, but non-intrusive)
@@ -36,7 +35,6 @@ ensure_cmd git         "git version control"
 ensure_cmd kubectl     "Kubernetes CLI (for completion and k alias"
 # ensure_cmd eza       "modern ls replacement (optional)"
 
-
 #### ------------------------------------------------------------
 #### Oh My Posh prompt
 #### ------------------------------------------------------------
@@ -44,7 +42,6 @@ ensure_cmd kubectl     "Kubernetes CLI (for completion and k alias"
 if command -v oh-my-posh >/dev/null 2>&1; then
   eval "$(oh-my-posh init zsh --config "$HOME/dotfiles/shared/oh-my-posh/devops.omp.json")"
 fi
-
 
 #### ------------------------------------------------------------
 #### LS / LL / LA: colorized listings (similar to pwsh profile)
@@ -67,7 +64,6 @@ else
   alias la='ls -lha'   # closest to your PowerShell la
 fi
 
-
 #### ------------------------------------------------------------
 #### Git enhancements (completion + basic config)
 #### ------------------------------------------------------------
@@ -81,7 +77,6 @@ alias gc='git commit'
 alias gco='git checkout'
 alias gb='git branch'
 
-
 #### ------------------------------------------------------------
 #### kubectl completion + k alias
 #### ------------------------------------------------------------
@@ -92,13 +87,12 @@ if command -v kubectl >/dev/null 2>&1; then
   alias k='kubectl'
 fi
 
-
 #### ------------------------------------------------------------
 #### Other aliases
 #### ------------------------------------------------------------
 
 alias vi='vim'
-
+alias '~'='cd ~'
 
 #### ------------------------------------------------------------
 #### OPTIONAL: directory jumping with zoxide (mirrors pwsh comment)
