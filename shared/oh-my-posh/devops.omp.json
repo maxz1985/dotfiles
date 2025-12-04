@@ -26,6 +26,9 @@
           "trailing_diamond": "",
           "foreground": "#ffffff",
           "background": "#98C379",
+           "background_templates": [
+              "{{ if or (.Working.Changed) (.Working.Untracked) (.Staging.Changed) (gt .Ahead 0) (gt .Behind 0) }}#E5C07B{{ end }}"
+            ],
           "template": " {{ .HEAD }}{{ if and (eq .Ahead 0) (eq .Behind 0) }} ≡{{ end }}{{ if gt .Ahead 0 }} ⇡{{ .Ahead }}{{ end }}{{ if gt .Behind 0 }} ⇣{{ .Behind }}{{ end }}{{ if .Working.Changed }} ~{{ .Working.Modified }} -{{ .Working.Deleted }}{{ if .Working.Unmerged }} !{{ .Working.Unmerged }}{{ end }}{{ end }} ",
           "properties": {
             "fetch_status": true,
