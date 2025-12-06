@@ -75,19 +75,18 @@
           "template": "  {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} "
         },
         {
-          "//": "Python venv pill — last, same cert-style tail",
           "type": "python",
           "style": "diamond",
           "leading_diamond": "\uE0C7",
           "trailing_diamond": "\uE0C6",
-          "background": "#906CFF",
           "foreground": "#100E23",
+          "background": "#906CFF",
           "properties": {
-            "display_mode": "environment",
-            "fetch_virtual_env": true,
+            "display_mode": "version", 
+            "fetch_virtual_env": false,
             "home_enabled": false
           },
-          "template": "  {{ if .Venv }}{{ .Venv }}{{ end }} "
+          "template": "  {{ .Full }}"
         }
       ]
     },
