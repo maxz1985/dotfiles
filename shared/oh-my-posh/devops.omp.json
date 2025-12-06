@@ -82,8 +82,9 @@
           "foreground": "#100E23",
           "background": "#906CFF",
           "properties": {
-            "display_mode": "version", 
-            "fetch_virtual_env": false,
+            "display_mode": "version",
+            "fetch_virtual_env": true,
+            "fetch_virtual_env_dir": false,
             "home_enabled": false
           },
           "template": "{{ if .Venv }}  {{ .Full }} {{ end }}"
