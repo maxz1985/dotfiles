@@ -82,7 +82,7 @@
           "foreground": "#100E23",
           "background": "#906CFF",
           "properties": {
-            "display_mode": "version",
+            "display_mode": "environment",
             "fetch_virtual_env": true,
             "fetch_virtual_env_dir": false,
             "home_enabled": false
@@ -91,7 +91,6 @@
         }
       ]
     },
-
     {
       "//": "SECOND LINE — user input prompt",
       "type": "prompt",
