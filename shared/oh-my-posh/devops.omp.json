@@ -86,7 +86,7 @@
             "fetch_virtual_env": false,
             "home_enabled": false
           },
-          "template": "  {{ .Full }}"
+          "template": "{{ if .Venv }}  {{ .Full }} {{ end }}"
         }
       ]
     },
