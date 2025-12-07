@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Latest stable version
 VER="$(curl -L -s https://dl.k8s.io/release/stable.txt)"
 
 TMPDIR="$(mktemp -d)"
-cd "$TMPDIR"
+
+# Ensure we return to original dir even on errors
+cleanup() {
+    popd >/dev/null || true
+    rm -rf "$TMPDIR"
+}
+trap cleanup EXIT
+
+pushd "$TMPDIR" >/dev/null
 
 echo "Downloading kubectl ${VER}…"
 curl -LO "https://dl.k8s.io/release/${VER}/bin/linux/amd64/kubectl"
@@ -18,8 +25,5 @@ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check --status
 
 echo "Installing to /usr/local/bin…"
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-
-echo "Cleaning up…"
-rm -rf "$TMPDIR"
 
 echo "kubectl ${VER} installed successfully."
