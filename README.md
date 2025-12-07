@@ -5,9 +5,10 @@ dotfiles/
   README.md
 
   scripts/
-    install-windows.ps1             # install Powershell Profile on Windows
+    install-windows.ps1             # Windows - install Powershell Profile
     install-macos.sh
     install-linux.sh
+    install-kubectl.sh              # Linux - install kubectl
 
   windows/
     terminal/
@@ -55,7 +56,15 @@ Replace the content of `.zshrc` with
 ```shell
 source "$HOME/dotfiles/macos/zsh/.zshrc"
 ```
-
+## Linux prep
+Install `unzip`
+```shell
+sudo dnf install unzip -y
+```
+Install `oh-my-posh`
+```shell
+curl -s https://ohmyposh.dev/install.sh | bash -s
+```
 ## Linux install bash config
 Use tiny loader in your .bashrc
 
