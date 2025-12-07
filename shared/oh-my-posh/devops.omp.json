@@ -15,7 +15,7 @@
           "style": "diamond",
           "leading_diamond": "",
           "trailing_diamond": "",
-          "foreground": "#ffffff",
+          "foreground": "#282c34",
           "background": "#61AFEF",
           "template": " {{ .Path }} "
         },
