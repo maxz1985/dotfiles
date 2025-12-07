@@ -24,7 +24,7 @@
           "style": "diamond",
           "leading_diamond": "",
           "trailing_diamond": "",
-          "foreground": "#ffffff",
+          "foreground": "#282c34",
           "background": "#98C379",
            "background_templates": [
               "{{ if or (.Working.Changed) (.Working.Untracked) (.Staging.Changed) (gt .Ahead 0) (gt .Behind 0) }}#E5C07B{{ end }}"
@@ -70,7 +70,7 @@
           "style": "diamond",
           "leading_diamond": "\uE0C7",
           "trailing_diamond": "\uE0C6",
-          "background": "#FFA400",
+          "background": "#282c34",
           "foreground": "#ffffff",
           "template": "  {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} "
         },
