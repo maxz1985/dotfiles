@@ -70,8 +70,8 @@
           "style": "diamond",
           "leading_diamond": "\uE0C7",
           "trailing_diamond": "\uE0C6",
-          "background": "#282c34",
-          "foreground": "#ffffff",
+          "background": "#FFA400",
+          "foreground": "#282c34",
           "template": "  {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} "
         },
         {
