@@ -103,6 +103,11 @@ alias '~'='cd ~'
 #   eval "$(zoxide init bash)"
 # fi
 
+# activate fzf if installed
+if command -v fzf >/dev/null 2>&1; then
+  eval "$(fzf --bash)"
+fi
+
 # --- Local machine-specific overrides (not in repo) ---
 if [ -f "$HOME/.bashrc.local" ]; then
   # shellcheck disable=SC1091
