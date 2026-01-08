@@ -65,6 +65,14 @@ else
 fi
 
 #### ------------------------------------------------------------
+#### Enable Bash completions in zsh (required for some CLIs)
+#### ------------------------------------------------------------
+if [[ -o interactive ]]; then
+  autoload -U +X bashcompinit
+  bashcompinit
+fi
+
+#### ------------------------------------------------------------
 #### Git enhancements (completion + basic config)
 #### ------------------------------------------------------------
 
