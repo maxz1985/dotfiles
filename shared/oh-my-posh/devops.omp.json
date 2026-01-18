@@ -10,21 +10,22 @@
     "newline": false,
     "segments": [
       {
-      "//": "OS icon diamond at the very left",
-      "type": "os",
-      "style": "diamond",
-      "leading_diamond": "",
-      "trailing_diamond": "",
-      "foreground": "#282c34",
-      "background": "#61AFEF",
-      "template": " \u001b[1m{{ .Icon }}\u001b[22m ",
-      "options": {
-        "rocky": "\uf32b",
-        "fedora": "\uf30a",
-        "linux": "\uf17c",
-        "windows": "\ue62a",
-        "macos": "\uf179"
-      }
+        "//": "OS icon diamond at the very left",
+        "type": "os",
+        "style": "diamond",
+        "leading_diamond": "",
+        "trailing_diamond": "",
+        "foreground": "#282c34",
+        "background": "#61AFEF",
+        "template": " \u001b[1m{{ .Icon }}\u001b[22m ",
+        "options": {
+          "rocky": "\uF32B",
+          "ubuntu": "\uF31B",
+          "redhat": "\uF316",
+          "linux": "\uF17C",
+          "windows": "\uE62A",
+          "macos": "\uF179"
+        }
       },
       {
         "//": "Path diamond, chained after OS",
