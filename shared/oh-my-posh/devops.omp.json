@@ -104,6 +104,12 @@
             "home_enabled": false
           },
           "template": "{{ if .Venv }}  {{ .Full }} {{ end }}"
+        },
+        {
+        "type": "upgrade",
+        "style": "plain",
+        "foreground": "#E5C07B",
+        "template": "  {{ .Current }} → {{ .Latest }} "
         }
       ]
     },
