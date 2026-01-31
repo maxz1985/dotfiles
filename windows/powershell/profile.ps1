@@ -42,6 +42,37 @@ function Install-RequiredModule {
     }
 }
 
+# update Oh-My-Posh from the checked out repo
+###
+function Update-OhMyPosh {
+    [CmdletBinding()]
+    param()
+
+    $repoRoot = Join-Path $HOME 'reposwork\oh-my-posh'
+    $installer = Join-Path $repoRoot 'website\static\install.ps1'
+
+    if (-not (Test-Path $installer)) {
+        Write-Host "WARNING: oh-my-posh installer not found at $installer" -ForegroundColor Yellow
+        return
+    }
+
+    Write-Host "Updating oh-my-posh from local repo…" -ForegroundColor Cyan
+
+    Push-Location (Split-Path $installer)
+    try {
+        & $installer
+    }
+    finally {
+        Pop-Location
+    }
+
+    if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
+        oh-my-posh version
+    }
+}
+Set-Alias update-omp Update-OhMyPosh
+###
+
 # ~ to cd $HOME
 function ~ { Set-Location $HOME }
 
