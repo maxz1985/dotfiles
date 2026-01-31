@@ -50,6 +50,29 @@ if command -v oh-my-posh >/dev/null 2>&1; then
 fi
 
 #### ------------------------------------------------------------
+#### Update oh-my-posh function
+#### ------------------------------------------------------------
+
+upgrade-omp() {
+    set -e
+
+    local install_dir="$HOME/.local/bin"
+
+    echo "Upgrading oh-my-posh..."
+    echo "Install dir: $install_dir"
+
+    curl -fsSL https://ohmyposh.dev/install.sh | bash -s -- -d "$install_dir"
+
+    if command -v oh-my-posh >/dev/null 2>&1; then
+        echo "oh-my-posh upgraded successfully:"
+        oh-my-posh version
+    else
+        echo "WARNING: oh-my-posh not found on PATH after upgrade" >&2
+        return 1
+    fi
+}
+
+#### ------------------------------------------------------------
 #### LS / LL / LA: colorized listings (bash-style)
 #### ------------------------------------------------------------
 
