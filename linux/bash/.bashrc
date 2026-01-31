@@ -53,7 +53,7 @@ fi
 #### Update oh-my-posh function
 #### ------------------------------------------------------------
 
-upgrade-omp() {
+update-omp() {
     set -e
 
     local install_dir="$HOME/.local/bin"
@@ -70,6 +70,52 @@ upgrade-omp() {
         echo "WARNING: oh-my-posh not found on PATH after upgrade" >&2
         return 1
     fi
+}
+
+#### ------------------------------------------------------------
+#### Update Meslo Nerd Font function
+#### ------------------------------------------------------------
+update-meslo() {
+  set -euo pipefail
+
+  local repo="${HOME}/nerd-fonts"
+  local font="Meslo"
+
+  if [[ ! -d "${repo}/.git" ]]; then
+    echo "ERROR: nerd-fonts repo not found at: ${repo}" >&2
+    echo "Clone it first:" >&2
+    echo "  git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts.git ${repo}" >&2
+    echo "  cd ${repo} && git sparse-checkout add patched-fonts/Meslo" >&2
+    return 1
+  fi
+
+  echo "Updating nerd-fonts repo: ${repo}"
+  cd "${repo}"
+
+  # Ensure sparse checkout is enabled (harmless if already enabled)
+  git sparse-checkout init --cone >/dev/null 2>&1 || true
+  git sparse-checkout add "patched-fonts/${font}" >/dev/null 2>&1 || true
+
+  # Update repo contents
+  git fetch --all --prune
+  git pull --ff-only
+
+  # Install/upgrade Meslo Nerd Font
+  if [[ ! -x "./install.sh" ]]; then
+    echo "ERROR: install.sh not found or not executable in ${repo}" >&2
+    return 1
+  fi
+
+  echo "Installing/upgrading ${font} Nerd Font..."
+  ./install.sh "${font}"
+
+  # Refresh font cache if available (Linux GUI systems)
+  if command -v fc-cache >/dev/null 2>&1; then
+    echo "Refreshing font cache..."
+    fc-cache -f >/dev/null 2>&1 || true
+  fi
+
+  echo "Done."
 }
 
 #### ------------------------------------------------------------
