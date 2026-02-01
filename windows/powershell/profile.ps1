@@ -69,6 +69,7 @@ function Update-OhMyPosh {
     if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
         oh-my-posh version
     }
+    oh-my-posh version
 }
 Set-Alias update-omp Update-OhMyPosh
 ###
@@ -117,6 +118,14 @@ Set-Alias -Name vi -Value vim
 # if (Get-Command zoxide -ErrorAction SilentlyContinue) {
 #     Invoke-Expression (& { (zoxide init powershell | Out-String) })
 # }
+
+# Extra commands in this profile
+if ($Host.Name -eq 'ConsoleHost') {
+    Write-Host ""
+    Write-Host "Extra Commands:" -ForegroundColor Cyan
+    Write-Host "  update-omp" -ForegroundColor Yellow -NoNewline
+    Write-Host "  – update Oh-My-Posh using install.ps1 from the source repo." -ForegroundColor DarkGray
+}
 
 # --- Local machine-specific overrides (not in repo) ---
 $localProfile = Join-Path $HOME "PowerShellProfile.ps1"
