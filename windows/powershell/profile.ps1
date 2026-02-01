@@ -119,7 +119,7 @@ Set-Alias -Name vi -Value vim
 #     Invoke-Expression (& { (zoxide init powershell | Out-String) })
 # }
 
-# Extra commands in this profile
+# Extra commands list
 if ($Host.Name -eq 'ConsoleHost') {
     Write-Host ""
     Write-Host "Extra Commands:" -ForegroundColor Cyan
