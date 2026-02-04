@@ -180,8 +180,8 @@ fi
 if [[ $- == *i* ]]; then
   echo
   echo -e "\e[36mExtra Commands:\e[0m"
-  echo -e "  \e[33mupgrade-omp\e[0m  – \e[90mUpgrade oh-my-posh using the official installer\e[0m"
-  echo -e "  \e[33mupgrade-meslo\e[0m – \e[90mUpdate Meslo Nerd Font from nerd-fonts repo\e[0m"
+  echo -e "  \e[33mupdate-omp\e[0m  – \e[90mUpgrade oh-my-posh using the official installer\e[0m"
+  echo -e "  \e[33mupdate-meslo\e[0m – \e[90mUpdate Meslo Nerd Font from nerd-fonts repo\e[0m"
 fi
 
 # --- Local machine-specific overrides (not in repo) ---
