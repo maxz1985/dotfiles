@@ -107,3 +107,7 @@ source "$HOME/dotfiles/linux/bash/.bashrc"
 Put your local machine-specific settings `$HOME/.bashrc.local`.
 
 If `$HOME/.bashrc.local` file exists, it will be read and applied after `$HOME/.bashrc`
+
+## `oh-my-posh` font
+
+Best font to use with `oh-my-posh` is `MesloLGM Nerd Font`.
