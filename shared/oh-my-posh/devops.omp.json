@@ -17,7 +17,7 @@
         "trailing_diamond": "",
         "foreground": "#282c34",
         "background": "#61AFEF",
-        "template": " \u001b[1m{{ .Icon }}\u001b[22m ",
+        "template": " {{ .Icon }} ",
         "options": {
           "rocky": "\uF32B",
           "ubuntu": "\uF31B",
